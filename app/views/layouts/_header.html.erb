@@ -1,0 +1,32 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <% if logged_in? %>
+  <li><%= link_to "Profile", current_user %></li>
+  <li><%= link_to "Configure", edit_user_path(current_user) %></li>
+  <li>
+  <%= link_to "Log out", logout_path, method:"delete", class:"orange darken-1" %>
+   </li>
+  <% end %>
+</ul>
+
+<nav>
+  <div class="nav-wrapper">
+    <%= link_to "My Website", root_path, class:"brand-logo" %>
+    <ul class="right">
+      <li><%= link_to "Home", root_path %></li>
+      <li> <%= link_to "Users", users_path %></li>
+      <% if logged_in? %>
+    
+      <li> <%= link_to "Users", users_path %></li>
+      <% end %>
+      <!-- Dropdown Trigger -->
+      <% if logged_in? %>
+        <li><a class="dropdown-button" href="#" data-activates="dropdown1">
+        Profile 
+        <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      <% else %>
+      <li><%= link_to "Sign In", login_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

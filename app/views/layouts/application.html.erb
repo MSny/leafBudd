@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--Here put your default website's name -->
+  <title><%= @title || "Website" %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= render 'layouts/shim' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'layouts/header' %>
+<% if flash.any? %>
+<% flash.each do |message_type, message| %>
+<div class="row card-panel alert alert-<%= message_type %>"> <%= message %>
+</div>
+<%end%>
+<%end%>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<%= yield %>
+
+<%= render 'layouts/footer' %>
+</body>
+</html>
