@@ -32,16 +32,50 @@ p {
   line-height: 0;
   height: auto;
   color: rgba(255,255,255,.9);
-}
-  .parallax-container .section {
+  
+   .section {
     width: 100%;
   }
+}
 
-@media only screen and (max-width : 992px) {
+.icon-block {
+  padding: 0 15px;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.button-center {
+  line-height: 240%;
+}
+.flexxed-wrapper {
+  display:   -webkit-box;
+  display:   -moz-box;
+  display:   -ms-flexbox;
+  display:   -moz-flex;
+  display:   -webkit-flex;
+  display:   flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  min-width: 100%;
+  width:     100%;
+}
+
+.flexxed {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    padding: 1%;
+}
+
+
+@media only screen and (max-width : 980px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
   }
+
   #index-banner .section {
     top: 10%;
   }
@@ -57,14 +91,34 @@ p {
   }
 }
 
-
-.icon-block {
-  padding: 0 15px;
+@media only screen and (max-width : 500px) {
+    .container {
+    min-width: 95%;
+    width: 95%;
+  }
 }
 
-footer.page-footer {
-  margin: 0;
+@media only screen and (min-width: 880px){
+    .flexxed {
+    max-width:  calc(95%/2);
+    min-height: 180px;
+    min-width:  calc(95%/2);
+    width:      calc(95%/2);
+
+    &:nth-child(even){
+      margin-left: 5%;
+    }
+  }
 }
-.button-center {
-  line-height: 240%;
+@media only screen and (min-width : 1480px) {
+  
+  .flexxed {
+    max-width: calc(96%/3);
+    min-width: calc(96%/3);
+    width: calc(96%/3);
+
+    &:nth-child(even) {
+     margin: 0.5rem 2% 1rem 2%;
+    }
+  }
 }
