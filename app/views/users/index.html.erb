@@ -7,7 +7,7 @@
         <span class="right"><%= gravatar_for(user, size: 50) %></span>
         <ul>
         <li><h4 class="truncate"><%= link_to user.name, user %></h4><small>- User since: <%= time_ago_in_words(user.created_at) %></small></li>
-        <hr class="blue-text">
+        <hr class="blue-border">
         <li><%= user.email %></li>
         <li><%= user.admin %></li>
         <li><%= link_to 'Show', user %> 

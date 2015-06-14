@@ -373,6 +373,9 @@ $colors: (
       .#{$color_name}-text {
         color: $color_value !important;
       }
+      .#{$color_name}-border {
+        border: 1px $color_value solid !important;
+      }
     }
     @else {
       .#{$color_name}.#{$color_type} {
@@ -380,6 +383,9 @@ $colors: (
       }      
       .#{$color_name}-text.text-#{$color_type} {
         color: $color_value !important;
+      }
+      .#{color_name}-border.border-#{$color_type} {
+        border: 1px $color_value solid !important;
       }
     }
   }
@@ -392,6 +398,9 @@ $colors: (
   }
   .#{$color}-text {
     color: $color_value !important;
+  }
+  .#{$color}-border {
+    border: 1px solid $color_value;
   }
 }
 
