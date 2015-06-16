@@ -11,10 +11,10 @@
         <li><%= user.email %></li>
         <li><%= user.admin %></li>
         <li><%= link_to 'Show', user %> 
-        <% if user == current_user %>
+        <% if (current_user && user == current_user) %>
         &nbsp;<%= link_to 'Edit', edit_user_path(user) %> &nbsp;
         <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-        <% elsif (current_user.admin? &&user != current_user) %>
+        <% elsif (current_user && current_user.admin? && user != current_user) %>
           &nbsp;<%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></li>
         <% else %>
           </li>

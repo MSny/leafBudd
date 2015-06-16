@@ -13,8 +13,8 @@
 <body>
 <%= render 'layouts/header' %>
 <% if flash.any? %>
-<% flash.each do |message_type, message| %>
-<div class="row card-panel alert alert-<%= message_type %>"> <%= message %>
+<% flash.each do |message_color, message| %>
+<div class="row card-panel <%= message_color %>-text"> <%= message %>
 </div>
 <%end%>
 <%end%>

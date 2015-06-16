@@ -1,17 +1,9 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div class="row col s10 offset-s1 red darken-3">
-      <h6><%= pluralize(@user.errors.count, "error") %> prevented your save:</h6>
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+
   <div class="row">
     <div class="input-field col s10 offset-s1">
       <i class="mdi-action-face-unlock prefix"></i>
+      <% render 'partials/errors', object: f.object %>
       <%= f.text_field :name, id:"name", class:"validate" %>
       <label for="name">Enter Your Name</label>
     </div>

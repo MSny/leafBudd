@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       #flash an error messages...Flashes for a short time using flash now.
       #only needed for render after the flash rather than redirect...
       #auto clear flash on the redirect but not render
-      flash.now[:danger]= "Invalid email/password combo"
+      flash.now[:red]= "Invalid email/Password combo"
       render "new"
     end
   end
