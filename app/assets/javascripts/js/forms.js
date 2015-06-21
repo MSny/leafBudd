@@ -1,22 +1,40 @@
 (function ($) {
   $(document).ready(function() {
 
-    // Function to update labels of text fields
-    Materialize.updateTextFields = function() {
-      var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-      $(input_selector).each(function(index, element) {
-        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined) {
-          $(this).siblings('label, i').addClass('active');
-        }
-        else {
-          $(this).siblings('label, i').removeClass('active');
-        }
-      });
-    }
-
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
 
+
+    // Function to update labels of text fields
+    Materialize.updateTextFields = function() {
+      //Modified Source to still work with Rails!
+      console.log("starting function");
+      $(input_selector).each(function(index, element) {
+        if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined) {
+          $(this)
+              .closest('.input-field')
+              .find('label, i').addClass('active');
+        } else {
+          $(this)
+            .closest('.input-field')
+            .find('label, i').removeClass('active');
+        }
+      });
+    }
+    //added this function to source which checks for field with errors.
+    Materialize.indicateErrors = function() { 
+      console.log("indicating!");
+      $(input_selector).each(function(index, element) {
+        if ($(element).parent().hasClass('field_with_errors')){
+          $(this)
+            .parent()
+            .parent() 
+            .find('label, i').addClass('red-text text-darken-1');
+        } else {
+          $(this).siblings('label, i').removeClass('red-text text-darken-1');
+        }
+      });
+    }
     // Handle HTML5 autofocus
     $('input[autofocus]').siblings('label, i').addClass('active');
 
@@ -29,9 +47,10 @@
     });
 
     // Add active if input element has been pre-populated on document ready
-    $(document).ready(function() {
-      Materialize.updateTextFields();
-    });
+    // $(document).ready(function() {
+    //   debugger
+    //   Materialize.updateTextFields();
+    // });
 
     // HTML DOM FORM RESET handling
     $(document).on('reset', function(e) {

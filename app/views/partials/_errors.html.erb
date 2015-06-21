@@ -1,5 +1,5 @@
 <% if object.errors.any? %>
-<div class="row col s10 offset-s1 red darken-3">
+<div class="row col s10 offset-s1 red darken-1 white-text card-panel">
   <h6><%= pluralize(object.errors.count, "error") %> prevented your save:</h6>
   <ul>
   <% object.errors.full_messages.each do |msg| %>

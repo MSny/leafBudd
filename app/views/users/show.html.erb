@@ -1,21 +1,23 @@
+<% @title = "#{@user}'s Page" %>
 <div class="container">
+  <div class="card-panel">
+  <span class="right"><%= gravatar_for(@user, size: 50) %></span>
+    <h5><strong class="cyan-text">Name:</strong>
+    <%= @user.name.capitalize %></h5>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+    <h5><strong class="cyan-text">Email:</strong>
+    <%= @user.email %></h5>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
+  </div>
 <% if @user.admin? %>
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
+  <div class="card-panel">
+  <p>
+    <strong>Welcome Admin! Have you checked the admin board?</strong>
+  </p>
+  </div>
 <%end %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="card-panel">
+  <h6><%= link_to 'Edit My Information!', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %></h6>
+</div>
 </div>
