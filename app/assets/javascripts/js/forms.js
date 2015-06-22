@@ -3,13 +3,14 @@
 
     // Text based inputs
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
-
+    var errorCount=0;
 
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
       //Modified Source to still work with Rails!
       console.log("starting function");
       $(input_selector).each(function(index, element) {
+        Materialize.indicateErrors(element);
         if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined) {
           $(this)
               .closest('.input-field')
@@ -21,20 +22,19 @@
         }
       });
     }
-    //added this function to source which checks for field with errors.
-    Materialize.indicateErrors = function() { 
-      console.log("indicating!");
-      $(input_selector).each(function(index, element) {
-        if ($(element).parent().hasClass('field_with_errors')){
-          $(this)
-            .parent()
-            .parent() 
-            .find('label, i').addClass('red-text text-darken-1');
+    //Takes in an element and adds redness to error fields
+    Materialize.indicateErrors = function(elem) { 
+        var inputField = $(elem).closest('.input-field');
+        console.log(inputField)
+        if (inputField.find('div.field_with_errors').length > "0"){
+          console.log(inputField.find('.field_with_errors'));
+            inputField.find('label, i').addClass('red-text text-darken-1');
+            inputField.append(elem);
+            errorCount++;
         } else {
-          $(this).siblings('label, i').removeClass('red-text text-darken-1');
+          inputField.find('label, i').removeClass('red-text text-darken-1');
         }
-      });
-    }
+      };
     // Handle HTML5 autofocus
     $('input[autofocus]').siblings('label, i').addClass('active');
 
@@ -47,10 +47,9 @@
     });
 
     // Add active if input element has been pre-populated on document ready
-    // $(document).ready(function() {
-    //   debugger
-    //   Materialize.updateTextFields();
-    // });
+    $(document).ready(function() {
+    
+    });
 
     // HTML DOM FORM RESET handling
     $(document).on('reset', function(e) {
