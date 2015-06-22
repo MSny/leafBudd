@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     #applies log out function to user if they were logged in when it was pressed
     log_out if logged_in?
     #go back home.

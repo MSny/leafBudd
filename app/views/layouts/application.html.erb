@@ -18,8 +18,10 @@
 </div>
 <%end%>
 <%end%>
-<% if notice %>
+<% if !flash.any? && notice %>
+<div class="row card-panel">
 <p id="notice"><%= notice %></p>
+</div>
 <% end %>
 <%= yield %>
 
